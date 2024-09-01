@@ -10,6 +10,17 @@ export class GameManager{
     games : Game[]=[];
  private constructor(){
     this.games=[];
+
+}
+
+private static instance : GameManager;
+
+static getInstance (){
+    if (GameManager.instance){
+        return GameManager.instance;
+    }
+    GameManager.instance = new GameManager();
+    return GameManager.instance
 }
 
 addMove(gameId: string, move:string){
@@ -34,4 +45,4 @@ log(){
 
 }
 
-export const gameManager = new GameManager();
+ export const gameManager  = GameManager.getInstance();
